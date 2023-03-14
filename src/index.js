@@ -1,13 +1,12 @@
-const StrictMode = React.StrictMode;
-const Provider = ReactRedux.Provider;
+import { combineReducers } from "redux";
+import { legacy_createStore } from "redux";
+import { useState, useEffect, StrictMode } from 'react';
+import { connect, Provider } from 'react-redux';
+import { createRoot } from 'react-dom/client';
+import './index.scss';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-const useState = React.useState;
-const useEffect = React.useEffect;
-const createRoot = ReactDOM.createRoot;
-
-const combineReducers = Redux.combineReducers;
-const createStore = Redux.createStore;
-const connect = ReactRedux.connect;
+const createStore = legacy_createStore;
 
 
 
@@ -128,7 +127,7 @@ const PowerBtn = (props) => {
 
 
 
-  React.useEffect(() => {
+  useEffect(() => {
     props.resetDisplay(); //power on
   }, []);
 
