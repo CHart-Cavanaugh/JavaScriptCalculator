@@ -1,13 +1,13 @@
-import { legacy_createStore, combineReducers } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 import displayTextReducer from './slices/displayTextSlice';
 
 
 
-const rootReducer = combineReducers({
-  displayText: displayTextReducer,
+const store = configureStore({
+  reducer: {
+    displayText: displayTextReducer,
+  }
 });
-const createStore = legacy_createStore;
-const store = createStore(rootReducer);
 
 
 

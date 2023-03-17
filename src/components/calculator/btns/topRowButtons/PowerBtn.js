@@ -1,16 +1,20 @@
+import { useSelector, useDispatch } from "react-redux";
+import { resetDisplay, powerOff } from './../../../../app/slices/displayTextSlice';
 import { useEffect } from "react";
 
 
 
 const PowerBtn = (props) => {
 
+  const displayText = useSelector(state => state.displayText);
+  const dispatch = useDispatch();
   const handleClick = () => {
 
     const updateDisplay = () => {
-      if (props.displayText.result !== "")
-        props.powerOff();
+      if (displayText.result !== "")
+        dispatch(powerOff());
       else
-        props.resetDisplay(); //power on
+        dispatch(resetDisplay()); //power on
     };
 
 
@@ -22,7 +26,7 @@ const PowerBtn = (props) => {
 
 
   useEffect(() => {
-    props.resetDisplay(); //power on
+    dispatch(resetDisplay()); //power on
   }, []);
 
 
@@ -32,7 +36,7 @@ const PowerBtn = (props) => {
     <button
       id="power-btn"
       key="btn-power"
-      class="btn border border-dark border-1"
+      className="btn border border-dark border-1"
       onClick={() => {
         handleClick();
       }}

@@ -9,16 +9,10 @@ const Calculator = (props) => {
 
     <div
       id="app-calculator"
-      class="rounded-3"
+      className="rounded-3"
     >
-      <CalculatorDisplay displayText={props.appState.displayText} />
-      <CalculatorBtns
-        displayText={props.appState.displayText}
-        resetDisplay={props.resetDisplay}
-        powerOff={props.powerOff}
-        setInput={props.setInput}
-        setResult={props.setResult}
-      />
+      <CalculatorDisplay />
+      <CalculatorBtns />
     </div>
 
   );

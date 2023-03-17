@@ -7,13 +7,7 @@ const App = (props) => {
   return (
 
     <div id="app-container">
-      <Calculator
-        appState={props.appState}
-        resetDisplay={props.resetDisplay}
-        powerOff={props.powerOff}
-        setInput={props.setInput}
-        setResult={props.setResult}
-      />
+      <Calculator />
     </div>
 
   );

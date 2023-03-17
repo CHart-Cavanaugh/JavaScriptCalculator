@@ -1,9 +1,16 @@
+import { useSelector, useDispatch } from "react-redux";
+import { setInput, setResult } from "../../../../app/slices/displayTextSlice";
+
+
+
 const EvaluateBtn = (props) => {
 
+  const displayText = useSelector(state => state.displayText);
+  const dispatch = useDispatch();
   const handleClick = () => {
 
-    let displayInput = props.displayText.input;
-    const displayResult = props.displayText.result;
+    let displayInput = displayText.input;
+    const displayResult = displayText.result;
 
     const lastCharIsNum = () => {
       return displayInput[displayInput.length - 1].match(/[0-9]/) !== null;
@@ -55,23 +62,23 @@ const EvaluateBtn = (props) => {
         if (getConsecutiveOpCount(displayInput) === 2) {
 
           displayInput = displayInput.slice(0, displayInput.length - 4);
-          props.setInput(displayInput + ` =`);
+          dispatch(setInput(displayInput + ` =`));
 
         }
         else if (getConsecutiveOpCount(displayInput) === 1) {
 
           displayInput = displayInput.slice(0, displayInput.length - 2);
-          props.setInput(displayInput + ` =`);
+          dispatch(setInput(displayInput + ` =`));
 
         }
         else if (getConsecutiveOpCount(displayInput) === 0 && lastCharIsDecimal()) {
 
           displayInput = displayInput.slice(0, displayInput.length - 1);
-          props.setInput(displayInput + ` =`);
+          dispatch(setInput(displayInput + ` =`));
 
         }
         else if (getConsecutiveOpCount(displayInput) === 0 && lastCharIsNum())
-          props.setInput(displayInput + ` =`);
+          dispatch(setInput(displayInput + ` =`));
 
       })();
 
@@ -85,7 +92,7 @@ const EvaluateBtn = (props) => {
         if (getInputOps() === null) {
 
           newResult = displayInput;
-          props.setResult(newResult);
+          dispatch(setResult(newResult));
 
         }
         else {
@@ -315,7 +322,7 @@ const EvaluateBtn = (props) => {
 
           }
 
-          props.setResult(newResult);
+          dispatch(setResult(newResult));
 
         }
 
@@ -336,9 +343,9 @@ const EvaluateBtn = (props) => {
     <button
       id="equals"
       key="btn-equals"
-      class="btn border border-dark border-1"
+      className="btn border border-dark border-1"
       onClick={() => {
-        if (props.displayText.input[props.displayText.input.length - 1] !== "=")
+        if (displayText.input[displayText.input.length - 1] !== "=")
           handleClick();
       }}
     >

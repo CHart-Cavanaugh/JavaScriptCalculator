@@ -1,10 +1,17 @@
+import { useSelector, useDispatch } from "react-redux";
+import { resetDisplay } from './../../../../app/slices/displayTextSlice';
+
+
+
 const ClearBtn = (props) => {
 
+  const displayText = useSelector(state => state.displayText);
+  const dispatch = useDispatch();
   const handleClick = () => {
 
     const updateDisplay = () => {
-      if (props.displayText.result !== "0")
-        props.resetDisplay();
+      if (displayText.result !== "0")
+        dispatch(resetDisplay());
     };
 
 
@@ -20,7 +27,7 @@ const ClearBtn = (props) => {
     <button
       id="clear"
       key="btn-clear"
-      class="btn border border-dark border-1"
+      className="btn border border-dark border-1"
       onClick={() => {
         handleClick()
       }}

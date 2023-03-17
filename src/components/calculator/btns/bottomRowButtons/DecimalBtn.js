@@ -1,8 +1,13 @@
+import { useSelector, useDispatch } from "react-redux";
+import { setInput, setResult } from "../../../../app/slices/displayTextSlice";
+
 const DecimalBtn = (props) => {
 
+  const displayText = useSelector(state => state.displayText);
+  const dispatch = useDispatch();
   const handleClick = () => {
 
-    const displayInput = props.displayText.input;
+    const displayInput = displayText.input;
 
     const lastCharIsEquals = () => {
       return displayInput[displayInput.length - 1] === "=";
@@ -24,14 +29,14 @@ const DecimalBtn = (props) => {
 
       if (lastCharIsEquals()) {
 
-        props.setInput("0.");
-        props.setResult("0.");
+        dispatch(setInput("0."));
+        dispatch(setResult("0."));
 
       }
       else if (lastCharIsNum() && !lastNumHasDecimal()) {
 
-        props.setInput(displayInput + ".");
-        props.setResult(props.displayText.result + ".");
+        dispatch(setInput(displayInput + "."));
+        dispatch(setResult(displayText.result + "."));
 
       }
 
@@ -50,7 +55,7 @@ const DecimalBtn = (props) => {
     <button
       id="decimal"
       key="btn-decimal"
-      class="btn border border-dark border-1"
+      className="btn border border-dark border-1"
       onClick={() => {
         handleClick();
       }}

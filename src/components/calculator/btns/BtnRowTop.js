@@ -8,15 +8,8 @@ const BtnRowTop = (props) => {
   return (
 
     <div id="btn-row-top">
-      <PowerBtn
-        displayText={props.displayText}
-        powerOff={props.powerOff}
-        resetDisplay={props.resetDisplay}
-      />
-      <ClearBtn
-        displayText={props.displayText}
-        resetDisplay={props.resetDisplay}
-      />
+      <PowerBtn />
+      <ClearBtn />
     </div>
 
   );

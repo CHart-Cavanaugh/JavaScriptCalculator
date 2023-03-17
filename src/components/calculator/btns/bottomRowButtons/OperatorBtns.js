@@ -1,5 +1,12 @@
+import { useSelector, useDispatch } from "react-redux";
+import { setInput, setResult } from '../../../../app/slices/displayTextSlice';
+
+
+
 const OperatorBtns = (props) => {
 
+  const displayText = useSelector(state => state.displayText);
+  const dispatch = useDispatch();
   const OPERATORS = {
     "+": "add",
     "-": "subtract",
@@ -10,7 +17,7 @@ const OperatorBtns = (props) => {
   const operatorActions = Object.values(OPERATORS);
   const handleClick = (symbol, index) => {
 
-    const displayInput = props.displayText.input;
+    const displayInput = displayText.input;
 
     const lastCharIsEquals = () => {
       return displayInput[displayInput.length - 1] === "=";
@@ -36,18 +43,18 @@ const OperatorBtns = (props) => {
 
     const updateDisplay = () => {
 
-      props.setResult(symbol);
+      dispatch(setResult(symbol));
 
       if (lastCharIsEquals())
-        props.setInput(props.displayText.result + ` ${symbol}`);
+        dispatch(setInput(displayText.result + ` ${symbol}`));
       else if (getConsecutiveOpCount() === 2 && symbol !== "-")
-        props.setInput(displayInput.slice(0, displayInput.length - 4) + ` ${symbol}`);
+        dispatch(setInput(displayInput.slice(0, displayInput.length - 4) + ` ${symbol}`));
       else if (getConsecutiveOpCount() === 1 && symbol !== "-")
-        props.setInput(displayInput.slice(0, displayInput.length - 2) + ` ${symbol}`);
+        dispatch(setInput(displayInput.slice(0, displayInput.length - 2) + ` ${symbol}`));
       else if ((getConsecutiveOpCount() === 1 && symbol === "-") || (getConsecutiveOpCount() === 0 && lastCharIsNum()))
-        props.setInput(displayInput + ` ${symbol}`);
+        dispatch(setInput(displayInput + ` ${symbol}`));
       else if (getConsecutiveOpCount() === 0 && lastCharIsDecimal())
-        props.setInput(displayInput.slice(0, displayInput.length - 1) + ` ${symbol}`);
+        dispatch(setInput(displayInput.slice(0, displayInput.length - 1) + ` ${symbol}`));
 
     };
 
@@ -69,7 +76,7 @@ const OperatorBtns = (props) => {
           <button
             id={operatorActions[index]}
             key={"operator-btn-" + operatorActions[index]}
-            class="btn border border-dark border-1"
+            className="btn border border-dark border-1"
             onClick={() => {
               handleClick(symbol, index);
             }}
