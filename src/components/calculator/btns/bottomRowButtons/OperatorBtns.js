@@ -42,12 +42,13 @@ const OperatorBtns = (props) => {
             !lastCharIsOp(displayInput.slice(0, displayInput.length - 2)) ? 1 :
               2);
       };
+      const inputIsEmpty = () => {
+        return displayInput === "";
+      };
 
       const updateDisplay = () => {
 
-        dispatch(setResult(symbol));
-
-        if (lastCharIsEquals())
+        if (inputIsEmpty() || lastCharIsEquals())
           dispatch(setInput(displayText.result + ` ${symbol}`));
         else if (getConsecutiveOpCount() === 2 && symbol !== "-")
           dispatch(setInput(displayInput.slice(0, displayInput.length - 4) + ` ${symbol}`));
@@ -57,6 +58,8 @@ const OperatorBtns = (props) => {
           dispatch(setInput(displayInput + ` ${symbol}`));
         else if (getConsecutiveOpCount() === 0 && lastCharIsDecimal())
           dispatch(setInput(displayInput.slice(0, displayInput.length - 1) + ` ${symbol}`));
+
+        dispatch(setResult(symbol));
 
       };
 
