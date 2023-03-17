@@ -26,9 +26,12 @@ const DecimalBtn = (props) => {
 
         return lastNum.indexOf(".") !== -1;
       };
+      const inputIsEmpty = () => {
+        return displayInput === "";
+      }
       const updateDisplay = () => {
 
-        if (lastCharIsEquals()) {
+        if (inputIsEmpty() || lastCharIsEquals()) {
 
           dispatch(setInput("0."));
           dispatch(setResult("0."));
