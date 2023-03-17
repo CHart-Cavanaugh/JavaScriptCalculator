@@ -24,69 +24,73 @@ const NumericalBtns = (props) => {
   ];
   const handleClick = (index) => {
 
-    const displayInput = displayText.input;
+    if (displayText.result !== "") {
 
-    const lastCharIsEquals = () => {
+      const displayInput = displayText.input;
 
-      return displayInput[displayInput.length - 1] === "=";
+      const lastCharIsEquals = () => {
 
-    };
-    const lastCharIsNum = () => {
+        return displayInput[displayInput.length - 1] === "=";
 
-      return (
-        displayInput[displayInput.length - 1] === "." ||
-        displayInput[displayInput.length - 1].match(/[0-9]/) !== null
-      );
+      };
+      const lastCharIsNum = () => {
 
-    };
-    const lastNumIsZero = () => {
+        return (
+          displayInput[displayInput.length - 1] === "." ||
+          displayInput[displayInput.length - 1].match(/[0-9]/) !== null
+        );
 
-      const inputNums = displayInput.match(/[0-9]+[.]?[0-9]*/g);
-      const lastNum = inputNums[inputNums.length - 1];
+      };
+      const lastNumIsZero = () => {
 
-      return lastNum === "0";
+        const inputNums = displayInput.match(/[0-9]+[.]?[0-9]*/g);
+        const lastNum = inputNums[inputNums.length - 1];
 
-    };
-    const lastCharIsOp = () => {
+        return lastNum === "0";
 
-      return displayInput[displayInput.length - 1].match(/[/*+-]/) !== null;
+      };
+      const lastCharIsOp = () => {
 
-    };
+        return displayInput[displayInput.length - 1].match(/[/*+-]/) !== null;
 
-    const updateDisplay = () => {
+      };
 
-      if (lastCharIsEquals() || displayText.result === "0" && displayInput === "") {
-        dispatch(setInput(`${index}`));
-        dispatch(setResult(`${index}`));
-      }
-      else if (lastCharIsNum()) {
+      const updateDisplay = () => {
 
-        if (lastNumIsZero()) {
+        if (lastCharIsEquals() || displayText.result === "0" && displayInput === "") {
+          dispatch(setInput(`${index}`));
+          dispatch(setResult(`${index}`));
+        }
+        else if (lastCharIsNum()) {
 
-          dispatch(setInput(displayInput.slice(0, displayInput.length - 1) + index));
-          dispatch(setResult(`${displayText.result.slice(0, displayInput.length - 1)}${index}`));
+          if (lastNumIsZero()) {
+
+            dispatch(setInput(displayInput.slice(0, displayInput.length - 1) + index));
+            dispatch(setResult(`${displayText.result.slice(0, displayInput.length - 1)}${index}`));
+
+          }
+          else {
+
+            dispatch(setInput(displayInput + index));
+            dispatch(setResult(`${displayText.result}${index}`));
+
+          }
 
         }
-        else {
+        else if (lastCharIsOp()) {
 
-          dispatch(setInput(displayInput + index));
-          dispatch(setResult(`${displayText.result}${index}`));
+          dispatch(setInput(displayInput + " " + index));
+          dispatch(setResult(index));
 
         }
 
-      }
-      else if (lastCharIsOp()) {
-
-        dispatch(setInput(displayInput + " " + index));
-        dispatch(setResult(index));
-
-      }
-
-    };
+      };
 
 
 
-    updateDisplay();
+      updateDisplay();
+
+    }
 
   };
 

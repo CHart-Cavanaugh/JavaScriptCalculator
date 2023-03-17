@@ -7,44 +7,47 @@ const DecimalBtn = (props) => {
   const dispatch = useDispatch();
   const handleClick = () => {
 
-    const displayInput = displayText.input;
+    if (displayText.result !== "") {
 
-    const lastCharIsEquals = () => {
-      return displayInput[displayInput.length - 1] === "=";
-    };
-    const lastCharIsNum = () => {
-      return displayInput[displayInput.length - 1].match(/[0-9]/) !== null;
-    };
-    const lastCharIsDecimal = () => {
-      return displayInput[displayInput.length - 1].match(/[.]/) !== null;
-    };
-    const lastNumHasDecimal = () => {
-      const displayNums = displayInput.match(/[0-9]+[.]?[0-9]*/g);
-      const lastNum = displayNums[displayNums.length - 1];
+      const displayInput = displayText.input;
 
-      return lastNum.indexOf(".") !== -1;
-    };
+      const lastCharIsEquals = () => {
+        return displayInput[displayInput.length - 1] === "=";
+      };
+      const lastCharIsNum = () => {
+        return displayInput[displayInput.length - 1].match(/[0-9]/) !== null;
+      };
+      const lastCharIsDecimal = () => {
+        return displayInput[displayInput.length - 1].match(/[.]/) !== null;
+      };
+      const lastNumHasDecimal = () => {
+        const displayNums = displayInput.match(/[0-9]+[.]?[0-9]*/g);
+        const lastNum = displayNums[displayNums.length - 1];
 
-    const updateDisplay = () => {
+        return lastNum.indexOf(".") !== -1;
+      };
+      const updateDisplay = () => {
 
-      if (lastCharIsEquals()) {
+        if (lastCharIsEquals()) {
 
-        dispatch(setInput("0."));
-        dispatch(setResult("0."));
+          dispatch(setInput("0."));
+          dispatch(setResult("0."));
 
-      }
-      else if (lastCharIsNum() && !lastNumHasDecimal()) {
+        }
+        else if (lastCharIsNum() && !lastNumHasDecimal()) {
 
-        dispatch(setInput(displayInput + "."));
-        dispatch(setResult(displayText.result + "."));
+          dispatch(setInput(displayInput + "."));
+          dispatch(setResult(displayText.result + "."));
 
-      }
+        }
 
-    };
+      };
 
 
 
-    updateDisplay();
+      updateDisplay();
+
+    }
 
   };
 

@@ -9,14 +9,17 @@ const ClearBtn = (props) => {
   const dispatch = useDispatch();
   const handleClick = () => {
 
-    const updateDisplay = () => {
-      if (displayText.result !== "0")
+    if (displayText.result !== "") {
+
+      const updateDisplay = () => {
         dispatch(resetDisplay());
-    };
+      };
 
 
 
-    updateDisplay();
+      updateDisplay();
+
+    }
 
   };
 

@@ -17,50 +17,54 @@ const OperatorBtns = (props) => {
   const operatorActions = Object.values(OPERATORS);
   const handleClick = (symbol, index) => {
 
-    const displayInput = displayText.input;
+    if (displayText.result !== "") {
 
-    const lastCharIsEquals = () => {
-      return displayInput[displayInput.length - 1] === "=";
-    };
-    const lastCharIsNum = () => {
-      return displayInput[displayInput.length - 1].match(/[0-9]/) !== null;
-    };
-    const lastCharIsDecimal = () => {
-      return displayInput[displayInput.length - 1] === ".";
-    };
-    const lastCharIsOp = (displayInput) => {
-      if (displayInput.length < 2)
-        return false;
+      const displayInput = displayText.input;
 
-      return displayInput[displayInput.length - 1].match(/[/*+-]/) !== null;
-    };
-    const getConsecutiveOpCount = () => {
-      return (
-        !lastCharIsOp(displayInput) ? 0 :
-          !lastCharIsOp(displayInput.slice(0, displayInput.length - 2)) ? 1 :
-            2);
-    };
+      const lastCharIsEquals = () => {
+        return displayInput[displayInput.length - 1] === "=";
+      };
+      const lastCharIsNum = () => {
+        return displayInput[displayInput.length - 1].match(/[0-9]/) !== null;
+      };
+      const lastCharIsDecimal = () => {
+        return displayInput[displayInput.length - 1] === ".";
+      };
+      const lastCharIsOp = (displayInput) => {
+        if (displayInput.length < 2)
+          return false;
 
-    const updateDisplay = () => {
+        return displayInput[displayInput.length - 1].match(/[/*+-]/) !== null;
+      };
+      const getConsecutiveOpCount = () => {
+        return (
+          !lastCharIsOp(displayInput) ? 0 :
+            !lastCharIsOp(displayInput.slice(0, displayInput.length - 2)) ? 1 :
+              2);
+      };
 
-      dispatch(setResult(symbol));
+      const updateDisplay = () => {
 
-      if (lastCharIsEquals())
-        dispatch(setInput(displayText.result + ` ${symbol}`));
-      else if (getConsecutiveOpCount() === 2 && symbol !== "-")
-        dispatch(setInput(displayInput.slice(0, displayInput.length - 4) + ` ${symbol}`));
-      else if (getConsecutiveOpCount() === 1 && symbol !== "-")
-        dispatch(setInput(displayInput.slice(0, displayInput.length - 2) + ` ${symbol}`));
-      else if ((getConsecutiveOpCount() === 1 && symbol === "-") || (getConsecutiveOpCount() === 0 && lastCharIsNum()))
-        dispatch(setInput(displayInput + ` ${symbol}`));
-      else if (getConsecutiveOpCount() === 0 && lastCharIsDecimal())
-        dispatch(setInput(displayInput.slice(0, displayInput.length - 1) + ` ${symbol}`));
+        dispatch(setResult(symbol));
 
-    };
+        if (lastCharIsEquals())
+          dispatch(setInput(displayText.result + ` ${symbol}`));
+        else if (getConsecutiveOpCount() === 2 && symbol !== "-")
+          dispatch(setInput(displayInput.slice(0, displayInput.length - 4) + ` ${symbol}`));
+        else if (getConsecutiveOpCount() === 1 && symbol !== "-")
+          dispatch(setInput(displayInput.slice(0, displayInput.length - 2) + ` ${symbol}`));
+        else if ((getConsecutiveOpCount() === 1 && symbol === "-") || (getConsecutiveOpCount() === 0 && lastCharIsNum()))
+          dispatch(setInput(displayInput + ` ${symbol}`));
+        else if (getConsecutiveOpCount() === 0 && lastCharIsDecimal())
+          dispatch(setInput(displayInput.slice(0, displayInput.length - 1) + ` ${symbol}`));
+
+      };
 
 
 
-    updateDisplay();
+      updateDisplay();
+
+    }
 
   };
 
