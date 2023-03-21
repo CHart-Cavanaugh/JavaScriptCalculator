@@ -7,7 +7,7 @@ const CalculatorDisplay = (props) => {
 
   return (
 
-    <div id="calculator-screens" class="text-end">
+    <div id="calculator-screens" className="text-end">
       <p
         className="display-input border border-dark border-1 rounded-1"
       >
