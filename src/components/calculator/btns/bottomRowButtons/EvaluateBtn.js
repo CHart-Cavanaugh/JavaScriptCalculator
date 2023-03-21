@@ -265,7 +265,7 @@ const EvaluateBtn = (props) => {
                       (operands[0][0] === "-" ? "- " + operands[0].slice(1) : operands[0])
                       + " * " +
                       (operands[1][0] === "-" ? "- " + operands[1].slice(1) : operands[1]),
-                      newResult
+                      String(newResult)[0] === "-" ? "- " + String(newResult).slice(1) : newResult
 
                     );
                     break;
@@ -278,7 +278,7 @@ const EvaluateBtn = (props) => {
                       (operands[0][0] === "-" ? "- " + operands[0].slice(1) : operands[0])
                       + " / " +
                       (operands[1][0] === "-" ? "- " + operands[1].slice(1) : operands[1]),
-                      newResult
+                      String(newResult)[0] === "-" ? "- " + String(newResult).slice(1) : newResult
 
                     );
                     break;
@@ -287,10 +287,10 @@ const EvaluateBtn = (props) => {
 
                     newResult = Number((Number(operands[0]) + Number(operands[1])).toPrecision(10));
                     displayInput = displayInput.replace(
-                      operands[0]
+                      (operands[0][0] === "-" ? "- " + operands[0].slice(1) : operands[0])
                       + " + " +
-                      operands[1],
-                      newResult
+                      (operands[1][0] === "-" ? "- " + operands[1].slice(1) : operands[1]),
+                      String(newResult)[0] === "-" ? "- " + String(newResult).slice(1) : newResult
 
                     );
                     break;
@@ -303,7 +303,7 @@ const EvaluateBtn = (props) => {
                       (operands[0][0] === "-" ? "- " + operands[0].slice(1) : operands[0])
                       + " - " +
                       (operands[1][0] === "-" ? "- " + operands[1].slice(1) : operands[1]),
-                      newResult
+                      String(newResult)[0] === "-" ? "- " + String(newResult).slice(1) : newResult
 
                     );
                     break;
