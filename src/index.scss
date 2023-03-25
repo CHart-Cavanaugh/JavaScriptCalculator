@@ -204,4 +204,10 @@ body {
     margin-bottom: 1em !important;
   }
 
+  #calculator-screens {
+    p:first-of-type {
+      min-height: 6em;
+    }
+  }
+
 }
