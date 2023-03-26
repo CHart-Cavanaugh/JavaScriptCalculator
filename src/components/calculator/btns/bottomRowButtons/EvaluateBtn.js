@@ -89,7 +89,28 @@ const EvaluateBtn = (props) => {
 
           let newResult = 0;
           let inputOpIndexes = [];
+          let getInputOpIndexes = () => {
+
+            let inputOpIndexes = [];
+
+
+
+            for (let i = 0; i < displayInput.length; i++)
+              if (
+                displayInput[i].match(/[/*+-]/) !== null &&
+                getConsecutiveOpCount(displayInput.slice(0, i + 1)) === 1 &&
+                i != 0
+              )
+                inputOpIndexes.push(i);
+
+
+
+            return inputOpIndexes;
+
+          };
           let nextInputOpIndex = 0;
+
+
 
           if (getInputOps() === null) {
 
@@ -141,15 +162,7 @@ const EvaluateBtn = (props) => {
             
             */
 
-            inputOpIndexes = [];
-
-            for (let i = 0; i < displayInput.length; i++)
-              if (
-                displayInput[i].match(/[/*+-]/) !== null &&
-                getConsecutiveOpCount(displayInput.slice(0, i + 1)) === 1 &&
-                i != 0
-              )
-                inputOpIndexes.push(i);
+            inputOpIndexes = getInputOpIndexes();
 
             while (inputOpIndexes.length !== 0) {
 
@@ -312,15 +325,7 @@ const EvaluateBtn = (props) => {
 
               })();
 
-              inputOpIndexes = [];
-
-              for (let i = 0; i < displayInput.length; i++)
-                if (
-                  displayInput[i].match(/[/*+-]/) !== null &&
-                  getConsecutiveOpCount(displayInput.slice(0, i + 1)) === 1 &&
-                  i != 0
-                )
-                  inputOpIndexes.push(i);
+              inputOpIndexes = getInputOpIndexes();
 
             }
 
