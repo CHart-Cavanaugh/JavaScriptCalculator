@@ -233,13 +233,24 @@ const EvaluateBtn = (props) => {
 
                   let leftOperand = "";
 
+
+
                   for (let i = nextInputOpIndex - 2; i >= 0 && displayInput[i] != " "; i--)
                     leftOperand = displayInput[i] + leftOperand;
 
+
+
                   if (
+
                     nextInputOpIndex - 1 - leftOperand.length != 0 &&
                     displayInput[nextInputOpIndex - 1 - leftOperand.length - 2] === "-" &&
-                    getConsecutiveOpCount(displayInput.slice(0, nextInputOpIndex - 1 - leftOperand.length - 1)) === 2
+                    (
+
+                      nextInputOpIndex - 1 - leftOperand.length - 2 === 0 ||
+                      getConsecutiveOpCount(displayInput.slice(0, nextInputOpIndex - 1 - leftOperand.length - 1)) === 2
+
+                    )
+
                   )
                     leftOperand = "-" + leftOperand;
 
