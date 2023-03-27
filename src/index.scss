@@ -30,7 +30,7 @@ body {
     width: 20em;
     padding: 10px;
     box-shadow: 2px 2px 10px black;
-    background: hsl(0, 0, 80%);
+    background: hsl(240, 30, 20%);
 
   }
 
@@ -125,43 +125,60 @@ body {
 
 
     button {
-      background: #444;
       color: white;
       font-size: 2em;
-      border: none;
     }
-
-    button:hover {
-      background: #555;
-    }
-
-    button:active {
-      background: #444;
-    }
-
 
 
     #numerical-btns {
 
-      display: inline-flex;
+      display: flex;
       flex-wrap: wrap;
+      width: 100%;
+      justify-content: flex-start;
 
 
 
       button {
+
         flex-basis: 33%;
+        background: linear-gradient(45deg,
+            hsl(20, 30, 40%),
+            hsl(20, 30, 45%),
+            hsl(20, 30, 40%));
+
+      }
+
+      button:hover {
+        background: linear-gradient(45deg,
+            hsl(20, 30, 50%),
+            hsl(20, 30, 55%),
+            hsl(20, 30, 50%));
+      }
+
+      button:active {
+        background: linear-gradient(45deg,
+            hsl(20, 30, 40%),
+            hsl(20, 30, 45%),
+            hsl(20, 30, 40%));
       }
 
       #zero {
+
         order: 10;
+
       }
 
       #decimal {
+
         order: 11;
+
       }
 
       #equals {
+
         order: 12;
+
       }
 
     }
@@ -174,7 +191,31 @@ body {
 
 
       button {
+
         width: 100%;
+        background: linear-gradient(45deg,
+            hsl(15, 60, 45%),
+            hsl(15, 60, 50%),
+            hsl(15, 60, 45%));
+
+      }
+
+      button:hover {
+
+        background: linear-gradient(45deg,
+            hsl(15, 60, 55%),
+            hsl(15, 60, 60%),
+            hsl(15, 60, 55%));
+
+      }
+
+      button:active {
+
+        background: linear-gradient(45deg,
+            hsl(15, 60, 45%),
+            hsl(15, 60, 50%),
+            hsl(15, 60, 45%));
+
       }
 
     }
@@ -195,18 +236,18 @@ body {
 
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 100%;
     width: 100% !important;
   }
 
-  #btn-row-top {
-    margin-bottom: 1em !important;
-  }
-
   #calculator-screens {
     p:first-of-type {
-      min-height: 6em;
+      min-height: 7.5em;
+    }
+
+    #display {
+      margin-bottom: 0 !important;
     }
   }
 
