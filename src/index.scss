@@ -1,5 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
+
+
 body {
 
   background: hsl(30, 50%, 30%);
@@ -150,18 +152,25 @@ body {
       }
 
       button:hover {
+
         background: linear-gradient(45deg,
             hsl(20, 30, 50%),
             hsl(20, 30, 55%),
             hsl(20, 30, 50%));
+
       }
 
       button:active {
+
         background: linear-gradient(45deg,
             hsl(20, 30, 40%),
             hsl(20, 30, 45%),
             hsl(20, 30, 40%));
+
       }
+
+
+
 
       #zero {
 
@@ -249,6 +258,50 @@ body {
     #display {
       margin-bottom: 0 !important;
     }
+  }
+
+  #numerical-btns {
+
+    button:hover {
+
+      background: linear-gradient(45deg,
+          hsl(20, 30, 40%),
+          hsl(20, 30, 45%),
+          hsl(20, 30, 40%));
+
+    }
+
+    button:active {
+
+      background: linear-gradient(45deg,
+          hsl(20, 30, 40%),
+          hsl(20, 30, 45%),
+          hsl(20, 30, 40%));
+
+    }
+
+  }
+
+  #operator-btns {
+
+    button:hover {
+
+      background: linear-gradient(45deg,
+          hsl(15, 60, 45%),
+          hsl(15, 60, 50%),
+          hsl(15, 60, 45%));
+
+    }
+
+    button:active {
+
+      background: linear-gradient(45deg,
+          hsl(15, 60, 55%),
+          hsl(15, 60, 60%),
+          hsl(15, 60, 55%));
+
+    }
+
   }
 
 }
