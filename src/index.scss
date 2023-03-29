@@ -89,32 +89,58 @@ body {
 
 
     #power-btn {
+
       flex-basis: 25%;
-      background: hsl(0, 50, 50%);
+      background: linear-gradient(45deg,
+          hsl(0, 50, 45%),
+          hsl(0, 50, 50%),
+          hsl(0, 50, 45%));
+
     }
 
     #power-btn:hover {
-      background: hsl(0, 50, 60%)
+
+      background: linear-gradient(45deg,
+          hsl(0, 50, 55%),
+          hsl(0, 50, 60%),
+          hsl(0, 50, 55%));
+
     }
 
     #power-btn:active {
-      background: hsl(0, 50, 50%)
+
+      background: linear-gradient(45deg,
+          hsl(0, 50, 45%),
+          hsl(0, 50, 50%),
+          hsl(0, 50, 45%));
+
     }
 
 
 
     #clear {
+
       flex-basis: 25%;
       border: none;
-      background: hsl(40, 90, 50%);
+      background: linear-gradient(45deg,
+          hsl(40, 90, 45%),
+          hsl(40, 90, 50%),
+          hsl(40, 90, 45%));
+
     }
 
     #clear:hover {
-      background: hsl(40, 90, 70%);
+      background: linear-gradient(45deg,
+          hsl(40, 90, 65%),
+          hsl(40, 90, 70%),
+          hsl(40, 90, 65%));
     }
 
     #clear:active {
-      background: hsl(40, 90, 50%);
+      background: linear-gradient(45deg,
+          hsl(40, 90, 45%),
+          hsl(40, 90, 50%),
+          hsl(40, 90, 45%));
     }
 
   }
@@ -258,6 +284,48 @@ body {
     #display {
       margin-bottom: 0 !important;
     }
+  }
+
+  #btn-row-top {
+
+    #power-btn:hover {
+
+      background: linear-gradient(45deg,
+          hsl(0, 50, 45%),
+          hsl(0, 50, 50%),
+          hsl(0, 50, 45%)) !important;
+
+    }
+
+    #power-btn:active {
+
+      background: linear-gradient(45deg,
+          hsl(0, 50, 35%),
+          hsl(0, 50, 40%),
+          hsl(0, 50, 35%)) !important;
+
+    }
+
+
+
+    #clear:hover {
+
+      background: linear-gradient(45deg,
+          hsl(40, 90, 45%),
+          hsl(40, 90, 50%),
+          hsl(40, 90, 45%)) !important;
+
+    }
+
+    #clear:active {
+
+      background: linear-gradient(45deg,
+          hsl(40, 90, 35%),
+          hsl(40, 90, 40%),
+          hsl(40, 90, 35%)) !important;
+
+    }
+
   }
 
   #numerical-btns {
