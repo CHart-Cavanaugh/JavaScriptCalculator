@@ -61,7 +61,13 @@ const EvaluateBtn = (props) => {
         //Update Input:
         (() => {
 
-          if (getConsecutiveOpCount(displayInput) === 2) {
+          if (displayInput === "") {
+
+            displayInput = displayText.result
+            dispatch(setInput(displayInput + " ="));
+
+          }
+          else if (getConsecutiveOpCount(displayInput) === 2) {
 
             displayInput = displayInput.slice(0, displayInput.length - 4);
             dispatch(setInput(displayInput + ` =`));
