@@ -49,7 +49,14 @@ const OperatorBtns = (props) => {
       const updateDisplay = () => {
 
         if (inputIsEmpty() || lastCharIsEquals())
-          dispatch(setInput(displayText.result + ` ${symbol}`));
+          dispatch(setInput(
+
+            (Number(displayText.result) > 0 ? displayText.result
+              : "- " + Math.abs(Number(displayText.result))) +
+
+            ` ${symbol}`
+
+          ));
         else if (getConsecutiveOpCount() === 2 && symbol !== "-")
           dispatch(setInput(displayInput.slice(0, displayInput.length - 4) + ` ${symbol}`));
         else if (getConsecutiveOpCount() === 1 && symbol !== "-")
