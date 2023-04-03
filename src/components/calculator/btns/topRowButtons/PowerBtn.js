@@ -11,10 +11,12 @@ const PowerBtn = (props) => {
   const handleClick = () => {
 
     const updateDisplay = () => {
+
       if (displayText.result !== "")
         dispatch(powerOff());
       else
         dispatch(resetDisplay()); //power on
+
     };
 
 
@@ -26,7 +28,9 @@ const PowerBtn = (props) => {
 
 
   useEffect(() => {
+
     dispatch(resetDisplay()); //power on
+
   }, []);
 
 
