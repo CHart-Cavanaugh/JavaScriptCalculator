@@ -12,7 +12,9 @@ const ClearBtn = (props) => {
     if (displayText.result !== "") {
 
       const updateDisplay = () => {
+
         dispatch(resetDisplay());
+
       };
 
 
