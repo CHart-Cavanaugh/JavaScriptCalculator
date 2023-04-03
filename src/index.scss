@@ -15,241 +15,253 @@ body {
 
 }
 
-
-
 #app-container {
 
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
   align-items: center;
-
-
-
-  #app-calculator {
-
-    width: 20em;
-    padding: 10px;
-    box-shadow: 2px 2px 10px black;
-    background: hsl(240, 30, 20%);
-
-  }
-
-  #app-calculator #buttons * {
-
-    user-select: none;
-
-  }
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
 
 }
 
 
 
-#calculator-screens {
+#app-calculator {
 
-  p {
-    padding: .15em;
-    min-height: 2em;
-    background: hsl(120, 10, 35%);
-    color: black;
-    font-size: 1.5em;
-    margin: 0;
-    margin-bottom: .5rem;
-  }
-
-  #display {
-    margin-bottom: 2rem;
-  }
-
-}
-
-#buttons {
-
-  .btn:active,
-  .btn:focus {
-    outline: none;
-    box-shadow: none;
-  }
-
-  #btn-row-top {
-
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: .4em;
+  background: hsl(240, 30, 20%);
+  box-shadow: 2px 2px 10px black;
+  padding: 10px;
+  width: 20em;
 
 
 
-    button {
-      font-size: 1.2em;
-      font-weight: 600;
-      padding-block: .5em;
-    }
+  #calculator-screens {
 
+    p {
 
-
-    #power-btn {
-
-      flex-basis: 25%;
-      background: linear-gradient(45deg,
-          hsl(0, 50, 45%),
-          hsl(0, 50, 50%),
-          hsl(0, 50, 45%));
+      background: hsl(120, 10, 35%);
+      color: black;
+      font-size: 1.5em;
+      margin: 0px 0px .5rem;
+      min-height: 2em;
+      padding: .15em;
 
     }
 
-    #power-btn:hover {
+    #display {
 
-      background: linear-gradient(45deg,
-          hsl(0, 50, 55%),
-          hsl(0, 50, 60%),
-          hsl(0, 50, 55%));
+      margin-bottom: 2rem;
 
-    }
-
-    #power-btn:active {
-
-      background: linear-gradient(45deg,
-          hsl(0, 50, 45%),
-          hsl(0, 50, 50%),
-          hsl(0, 50, 45%));
-
-    }
-
-
-
-    #clear {
-
-      flex-basis: 25%;
-      border: none;
-      background: linear-gradient(45deg,
-          hsl(40, 90, 45%),
-          hsl(40, 90, 50%),
-          hsl(40, 90, 45%));
-
-    }
-
-    #clear:hover {
-      background: linear-gradient(45deg,
-          hsl(40, 90, 65%),
-          hsl(40, 90, 70%),
-          hsl(40, 90, 65%));
-    }
-
-    #clear:active {
-      background: linear-gradient(45deg,
-          hsl(40, 90, 45%),
-          hsl(40, 90, 50%),
-          hsl(40, 90, 45%));
     }
 
   }
 
-  #btn-row-bottom {
+  #buttons {
 
-    display: grid;
-    grid-template-columns: 3fr 1fr;
+    * {
 
+      user-select: none;
 
-
-    button {
-      color: white;
-      font-size: 2em;
     }
 
+    .btn:active,
+    .btn:focus {
 
-    #numerical-btns {
+      outline: none;
+      box-shadow: none;
+
+    }
+
+    #btn-row-top {
 
       display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-      justify-content: flex-start;
+      justify-content: space-between;
+      margin-bottom: .4em;
 
 
 
       button {
 
-        flex-basis: 33%;
-        background: linear-gradient(45deg,
-            hsl(20, 30, 40%),
-            hsl(20, 30, 45%),
-            hsl(20, 30, 40%));
+        font-size: 1.2em;
+        font-weight: 600;
+        padding-block: .5em;
 
       }
 
-      button:hover {
 
-        background: linear-gradient(45deg,
-            hsl(20, 30, 50%),
-            hsl(20, 30, 55%),
-            hsl(20, 30, 50%));
 
-      }
-
-      button:active {
+      #power-btn {
 
         background: linear-gradient(45deg,
-            hsl(20, 30, 40%),
-            hsl(20, 30, 45%),
-            hsl(20, 30, 40%));
+            hsl(0, 50, 45%),
+            hsl(0, 50, 50%),
+            hsl(0, 50, 45%));
+        flex-basis: 25%;
+
+      }
+
+      #power-btn:hover {
+
+        background: linear-gradient(45deg,
+            hsl(0, 50, 55%),
+            hsl(0, 50, 60%),
+            hsl(0, 50, 55%));
+
+      }
+
+      #power-btn:active {
+
+        background: linear-gradient(45deg,
+            hsl(0, 50, 45%),
+            hsl(0, 50, 50%),
+            hsl(0, 50, 45%));
 
       }
 
 
 
+      #clear {
 
-      #zero {
-
-        order: 10;
-
-      }
-
-      #decimal {
-
-        order: 11;
+        background: linear-gradient(45deg,
+            hsl(40, 90, 45%),
+            hsl(40, 90, 50%),
+            hsl(40, 90, 45%));
+        border: none;
+        flex-basis: 25%;
 
       }
 
-      #equals {
+      #clear:hover {
 
-        order: 12;
+        background: linear-gradient(45deg,
+            hsl(40, 90, 65%),
+            hsl(40, 90, 70%),
+            hsl(40, 90, 65%));
+
+      }
+
+      #clear:active {
+
+        background: linear-gradient(45deg,
+            hsl(40, 90, 45%),
+            hsl(40, 90, 50%),
+            hsl(40, 90, 45%));
 
       }
 
     }
 
-    #operator-btns {
+    #btn-row-bottom {
 
-      display: inline-flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 3fr 1fr;
 
 
 
       button {
 
+        color: white;
+        font-size: 2em;
+
+      }
+
+
+
+      #numerical-btns {
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
         width: 100%;
-        background: linear-gradient(45deg,
-            hsl(15, 60, 45%),
-            hsl(15, 60, 50%),
-            hsl(15, 60, 45%));
+
+
+
+        button {
+
+          background: linear-gradient(45deg,
+              hsl(20, 30, 40%),
+              hsl(20, 30, 45%),
+              hsl(20, 30, 40%));
+          flex-basis: 33%;
+
+        }
+
+        button:hover {
+
+          background: linear-gradient(45deg,
+              hsl(20, 30, 50%),
+              hsl(20, 30, 55%),
+              hsl(20, 30, 50%));
+
+        }
+
+        button:active {
+
+          background: linear-gradient(45deg,
+              hsl(20, 30, 40%),
+              hsl(20, 30, 45%),
+              hsl(20, 30, 40%));
+
+        }
+
+
+
+
+        #zero {
+
+          order: 10;
+
+        }
+
+        #decimal {
+
+          order: 11;
+
+        }
+
+        #equals {
+
+          order: 12;
+
+        }
 
       }
 
-      button:hover {
+      #operator-btns {
 
-        background: linear-gradient(45deg,
-            hsl(15, 60, 55%),
-            hsl(15, 60, 60%),
-            hsl(15, 60, 55%));
+        display: inline-flex;
+        flex-direction: column;
 
-      }
 
-      button:active {
 
-        background: linear-gradient(45deg,
-            hsl(15, 60, 45%),
-            hsl(15, 60, 50%),
-            hsl(15, 60, 45%));
+        button {
+
+          background: linear-gradient(45deg,
+              hsl(15, 60, 45%),
+              hsl(15, 60, 50%),
+              hsl(15, 60, 45%));
+          width: 100%;
+
+        }
+
+        button:hover {
+
+          background: linear-gradient(45deg,
+              hsl(15, 60, 55%),
+              hsl(15, 60, 60%),
+              hsl(15, 60, 55%));
+
+        }
+
+        button:active {
+
+          background: linear-gradient(45deg,
+              hsl(15, 60, 45%),
+              hsl(15, 60, 50%),
+              hsl(15, 60, 45%));
+
+        }
 
       }
 
@@ -264,109 +276,128 @@ body {
 @media only screen and (max-width: 480px) {
 
   #root * {
+
     font-size: 1rem;
+
   }
 
   #app-calculator {
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 100%;
+    justify-content: space-between;
     width: 100% !important;
-  }
 
-  #calculator-screens {
-    p:first-of-type {
-      min-height: 7.5em;
-    }
 
-    #display {
-      margin-bottom: 0 !important;
-    }
-  }
 
-  #btn-row-top {
+    #calculator-screens {
 
-    #power-btn:hover {
+      p:first-of-type {
 
-      background: linear-gradient(45deg,
-          hsl(0, 50, 45%),
-          hsl(0, 50, 50%),
-          hsl(0, 50, 45%)) !important;
+        min-height: 7.5em;
+
+      }
+
+      #display {
+
+        margin-bottom: 0 !important;
+
+      }
 
     }
 
-    #power-btn:active {
+    #buttons {
 
-      background: linear-gradient(45deg,
-          hsl(0, 50, 35%),
-          hsl(0, 50, 40%),
-          hsl(0, 50, 35%)) !important;
+      #btn-row-top {
 
-    }
+        #power-btn:hover {
+
+          background: linear-gradient(45deg,
+              hsl(0, 50, 45%),
+              hsl(0, 50, 50%),
+              hsl(0, 50, 45%)) !important;
+
+        }
+
+        #power-btn:active {
+
+          background: linear-gradient(45deg,
+              hsl(0, 50, 35%),
+              hsl(0, 50, 40%),
+              hsl(0, 50, 35%)) !important;
+
+        }
 
 
 
-    #clear:hover {
+        #clear:hover {
 
-      background: linear-gradient(45deg,
-          hsl(40, 90, 45%),
-          hsl(40, 90, 50%),
-          hsl(40, 90, 45%)) !important;
+          background: linear-gradient(45deg,
+              hsl(40, 90, 45%),
+              hsl(40, 90, 50%),
+              hsl(40, 90, 45%)) !important;
 
-    }
+        }
 
-    #clear:active {
+        #clear:active {
 
-      background: linear-gradient(45deg,
-          hsl(40, 90, 35%),
-          hsl(40, 90, 40%),
-          hsl(40, 90, 35%)) !important;
+          background: linear-gradient(45deg,
+              hsl(40, 90, 35%),
+              hsl(40, 90, 40%),
+              hsl(40, 90, 35%)) !important;
 
-    }
+        }
 
-  }
+      }
 
-  #numerical-btns {
+      #btn-row-bottom {
 
-    button:hover {
+        #numerical-btns {
 
-      background: linear-gradient(45deg,
-          hsl(20, 30, 40%),
-          hsl(20, 30, 45%),
-          hsl(20, 30, 40%)) !important;
+          button:hover {
 
-    }
+            background: linear-gradient(45deg,
+                hsl(20, 30, 40%),
+                hsl(20, 30, 45%),
+                hsl(20, 30, 40%)) !important;
 
-    button:active {
+          }
 
-      background: linear-gradient(45deg,
-          hsl(20, 30, 30%),
-          hsl(20, 30, 35%),
-          hsl(20, 30, 30%)) !important;
+          button:active {
 
-    }
+            background: linear-gradient(45deg,
+                hsl(20, 30, 30%),
+                hsl(20, 30, 35%),
+                hsl(20, 30, 30%)) !important;
 
-  }
+          }
 
-  #operator-btns {
+        }
 
-    button:hover {
+        #operator-btns {
 
-      background: linear-gradient(45deg,
-          hsl(15, 60, 45%),
-          hsl(15, 60, 50%),
-          hsl(15, 60, 45%)) !important;
+          button:hover {
 
-    }
+            background: linear-gradient(45deg,
+                hsl(15, 60, 45%),
+                hsl(15, 60, 50%),
+                hsl(15, 60, 45%)) !important;
 
-    button:active {
+          }
 
-      background: linear-gradient(45deg,
-          hsl(15, 60, 35%),
-          hsl(15, 60, 40%),
-          hsl(15, 60, 35%)) !important;
+          button:active {
+
+            background: linear-gradient(45deg,
+                hsl(15, 60, 35%),
+                hsl(15, 60, 40%),
+                hsl(15, 60, 35%)) !important;
+
+          }
+
+        }
+
+      }
 
     }
 
