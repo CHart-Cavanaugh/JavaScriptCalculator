@@ -3,7 +3,10 @@ import { useSelector } from "react-redux";
 
 
 const CalculatorDisplay = (props) => {
+
   const displayText = useSelector(state => state.displayText);
+
+
 
   return (
 
