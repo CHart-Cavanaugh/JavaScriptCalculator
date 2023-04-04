@@ -12,50 +12,42 @@ const EvaluateBtn = (props) => {
     if (displayText.result !== "" && displayText.input[displayText.input.length - 1] !== "=") {
 
       let displayInput = displayText.input;
-      const displayResult = displayText.result;
-
       const lastCharIsNum = () => {
+
         return displayInput[displayInput.length - 1].match(/[0-9]/) !== null;
+
       };
       const lastCharIsDecimal = () => {
+
         return displayInput[displayInput.length - 1] === ".";
+
       };
       const lastCharIsOp = (displayInput) => {
+
         if (displayInput.length < 2)
           return false;
 
+
+
         return displayInput[displayInput.length - 1].match(/[/*+-]/) !== null;
+
       };
       const getConsecutiveOpCount = (displayInput) => {
+
         return (
+
           !lastCharIsOp(displayInput) ? 0 :
             !lastCharIsOp(displayInput.slice(0, displayInput.length - 2)) ? 1 :
-              2);
-      };
-      const getOpCount = () => {
+              2
 
-        const expressionOps = displayInput.match(/[/*+-]/g);
-        let opCount = 0;
+        );
 
-
-
-        if (expressionOps === null)
-          return 0;
-
-        opCount = expressionOps.length;
-
-
-
-        return opCount;
-
-      };
-      const getInputNums = () => {
-        return displayInput.match(/[0-9]+[.]?[0-9]*/g);
       };
       const getInputOps = () => {
-        return displayInput.match(/[/*+-]/g);
-      };
 
+        return displayInput.match(/[/*+-]/g);
+
+      };
       const updateDisplay = () => {
 
         //Update Input:
@@ -95,7 +87,7 @@ const EvaluateBtn = (props) => {
 
           let newResult = 0;
           let inputOpIndexes = [];
-          let getInputOpIndexes = () => {
+          const getInputOpIndexes = () => {
 
             let inputOpIndexes = [];
 
@@ -105,7 +97,7 @@ const EvaluateBtn = (props) => {
               if (
                 displayInput[i].match(/[/*+-]/) !== null &&
                 getConsecutiveOpCount(displayInput.slice(0, i + 1)) === 1 &&
-                i != 0
+                i !== 0
               )
                 inputOpIndexes.push(i);
 
@@ -126,48 +118,6 @@ const EvaluateBtn = (props) => {
           }
           else {
 
-            /* Notes
-            
-                - Get the indexes of displayInput's operators and push them to the 
-                  inputOpIndexes array.
-                
-                  -- When getting the indexes of displayInput's operators, don't count
-                     consecutive operators (which should just be the "-" operator in 
-                     every case where a 2nd operator appears).
-                  -- The value being pushed to the inputOpIndexes array should be an
-                     array of length 2 (where the first element is an operator symbol
-                     and the second element is the index of that operator symbol in 
-                     displayInput).
-                  -- [END]
-                  
-                - Filter inputOpIndexes such that the returned array only contains the 
-                  indexes for the "*" and "/" operators.
-                  
-                    -- Use the "map" method on the filtered array to get an array that
-                       only contains the indexes for all of the "*" and "/" operators
-                       in displayInput.
-                       
-                        --- Use the "forEach" method on the returned array to evaluate 
-                            the operations for each inputOpIndex in that array.
-                            
-                              ---- The callback function for the "forEach" method should
-                                   have a single parameter of (opIndex), should evaluate
-                                   the operation defined by the operator at
-                                   displayInput[opIndex], and should replace the 
-                                   operation in displayInput with the result of that 
-                                   operation.
-                              ---- [END]
-                            
-                        --- [END]
-                       
-                    -- [END]
-                  
-                - Repeat the previous statement, but for the "+" and "-" operators.
-                - Output the final result from displayInput to the Calculator.
-                - [END]
-            
-            */
-
             inputOpIndexes = getInputOpIndexes();
 
             while (inputOpIndexes.length !== 0) {
@@ -179,69 +129,13 @@ const EvaluateBtn = (props) => {
 
               (() => {
 
-                /* Notes 1
-  
-                - Get operands[0] from displayInput
-  
-                  -- Set operands[0] to the the left (first) operand of the operation at 
-                     displayInput[opIndex].
-  
-                    --- opIndex is the index of some operation in the expression stored 
-                        in displayInput.
-                    --- displayInput[opIndex] is the operator associated with opIndex.
-                    --- An operator in displayInput represents an operation between 2 
-                        numbers (which are the operands of the operation).
-                    --- [END]
-  
-                  -- Set operands[0] negative if the following conditions are met:
-  
-                    1) The start of operands[0] is not the start of displayInput 
-                       (which would indicate that there is no operator
-                       before operands[0]).
-                    2) The operator before operands[0] is "-" (which indicates 
-                       that the operator could potentially be consecutive to 
-                       another operator).
-                    3) The "-" before operands[0] in displayInput is a 2nd 
-                       consecutive operator (which indicates that the "-" is 
-                       actually a negative sign, not the operator for a 
-                       subtraction, and operands[0] should be negative).
-                    n) [END]
-  
-                  - [END]
-  
-                - [END]
-  
-              */
-
-                /* Notes 2
-  
-                - Get operands[1] from displayInput
-  
-                  -- Set operands[1] to the the right (second) operand of the operation 
-                     at displayInput[opIndex].
-  
-                    --- opIndex is the index of some operation in the expression stored 
-                        in displayInput.
-                    --- displayInput[opIndex] is the operator associated with opIndex.
-                    --- An operator in displayInput represents an operation between 2 
-                        numbers (which are the operands of the operation).
-                    --- If displayInput[opIndex + 2] is a "-" and not the start of 
-                        operand2, then set operands [1] negative.
-                    --- [END]
-  
-                  -- [END]
-  
-                - [END]
-  
-              */
-
                 const getLeftOperand = () => {
 
                   let leftOperand = "";
 
 
 
-                  for (let i = nextInputOpIndex - 2; i >= 0 && displayInput[i] != " "; i--)
+                  for (let i = nextInputOpIndex - 2; i >= 0 && displayInput[i] !== " "; i--)
                     leftOperand = displayInput[i] + leftOperand;
 
 
@@ -272,18 +166,20 @@ const EvaluateBtn = (props) => {
                   if (displayInput[nextInputOpIndex + 2] === "-") {
 
                     rightOperand += "-"
-                    for (let i = nextInputOpIndex + 4; i < displayInput.length && displayInput[i] != " "; i++)
+                    for (let i = nextInputOpIndex + 4; i < displayInput.length && displayInput[i] !== " "; i++)
                       rightOperand += displayInput[i];
 
                   }
                   else
-                    for (let i = nextInputOpIndex + 2; i < displayInput.length && displayInput[i] != " "; i++)
+                    for (let i = nextInputOpIndex + 2; i < displayInput.length && displayInput[i] !== " "; i++)
                       rightOperand += displayInput[i];
 
                   return rightOperand;
 
                 };
                 const operands = [getLeftOperand(), getRightOperand()];
+
+
 
                 switch (displayInput[nextInputOpIndex]) {
 
@@ -338,6 +234,10 @@ const EvaluateBtn = (props) => {
                     );
                     break;
 
+                  default:
+
+                    break;
+
                 }
 
               })();
@@ -352,7 +252,7 @@ const EvaluateBtn = (props) => {
 
         })();
 
-      }
+      };
 
 
 
