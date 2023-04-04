@@ -4,9 +4,11 @@ import displayTextReducer from './slices/displayTextSlice';
 
 
 const store = configureStore({
+
   reducer: {
     displayText: displayTextReducer,
   }
+
 });
 
 
