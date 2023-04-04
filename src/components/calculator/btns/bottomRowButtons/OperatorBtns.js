@@ -62,14 +62,13 @@ const OperatorBtns = (props) => {
         return displayInput === "";
 
       };
-
       const updateDisplay = () => {
 
         const setInputToResult = () => {
 
           dispatch(setInput(
 
-            (Number(displayText.result) > 0 ? displayText.result
+            (Number(displayText.result) >= 0 ? displayText.result
               : "- " + Math.abs(Number(displayText.result))) +
 
             ` ${symbol}`
