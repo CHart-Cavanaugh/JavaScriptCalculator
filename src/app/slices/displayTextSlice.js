@@ -3,12 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 export const displayTextSlice = createSlice({
+
   name: "displayText",
   initialState: {
+
     input: "",
     result: "",
+
   },
   reducers: {
+
     setInput: (state, action) => {
       state.input = action.payload;
     },
@@ -27,6 +31,7 @@ export const displayTextSlice = createSlice({
       state.input = "";
       state.result = "";
     },
+
   },
 });
 
