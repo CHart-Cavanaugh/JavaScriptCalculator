@@ -31,7 +31,7 @@ const PowerBtn = (props) => {
 
     dispatch(resetDisplay()); //power on
 
-  }, []);
+  }, [dispatch]);
 
 
 
